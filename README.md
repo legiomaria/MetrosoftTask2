@@ -7,9 +7,10 @@
 # Steps to run:
 1. Clone the application, from https://github.com/legiomaria/MetrosoftTask2.git.
 2. Run the application.
-3. The application automatically run it migrations, create relevant tables, and seed the tables. 
+3. The application automatically runs it migrations, create relevant tables, and seed the tables. 
 4. Enjoy.
 
 # ConnectionString:
-The connectionstring is found in the appsettings.json 
+The connectionstring is found in the appsettings.json, contained in the TodoList.Api project 
+
 
