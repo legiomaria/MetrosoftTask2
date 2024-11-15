@@ -11,6 +11,10 @@
 4. Enjoy.
 
 # ConnectionString:
-The connectionstring is found in the appsettings.json, contained in the TodoList.Api project 
+The connectionstring is found in the appsettings.json, contained in the TodoList.Api project.
+I suggest the server in the connectionstring is replaced from the dot to that on your SSMS 
+eg  Server=.;Database=MetroSoftTaskDb;TrustServerCertificate=true;Integrated Security=true;Trusted_Connection=True;
+
+changed to Server=YourServerName;Database=MetroSoftTaskDb;TrustServerCertificate=true;Integrated Security=true;Trusted_Connection=True; 
 
 
