@@ -1,0 +1,258 @@
+﻿@using TodoList.Api.Models.Entities
+@model IEnumerable<Todo>
+
+@{
+    ViewData["Title"] = "Todo List";
+}
+
+<h2>Todo List</h2>
+
+<div class="todo-container">
+    <form id="addTodoForm" method="post" class="input-group">
+        <input type="text" id="newTodoTitle" placeholder="Add a new todo..." />
+        <button type="button" id="addTodoButton" class="add-todo">Add Todo</button>
+    </form>
+
+    <div class="filter-buttons">
+        <button id="filterAllButton" class="filter-button">All</button>
+        <button id="filterActiveButton" class="filter-button">Active</button>
+        <button id="filterCompletedButton" class="filter-button">Completed</button>
+    </div>
+
+    <div id="todoList" class="todo-list">
+        @foreach (var todo in Model)
+        {
+            <partial name="_TodoItemPartial" model="todo" />
+        }
+    </div>
+
+    <button id="clearCompletedButton" class="clear-completed">Clear Completed</button>
+</div>
+
+@section Scripts {
+    <script src="~/js/todo.js"></script>
+    <!-- Add this in the head section of your HTML or layout view -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+}
+
+<style>
+    /* Add CSS here */
+
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+    }
+
+    .todo-container {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        width: 320px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+        /* Header */
+        .todo-container h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+    /* Input Group */
+    .input-group {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+
+        .input-group input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            font-size: 14px;
+        }
+
+    .add-todo {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+        .add-todo:hover {
+            background-color: #0056b3;
+        }
+
+    /* Filter Buttons */
+    .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .filter-button {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-size: 14px;
+    }
+
+        .filter-button:hover {
+            background-color: #d0d0d0;
+        }
+
+        .filter-button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+    /* Todo List */
+    .todo-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 15px;
+    }
+
+    .todo-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .todo-item span {
+            flex-grow: 1;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .todo-item.completed span {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        /* Checkbox and Delete Button */
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+    .delete-todo {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8em;
+        transition: background-color 0.2s;
+    }
+
+        .delete-todo:hover {
+            background-color: #e60000;
+        }
+
+    /* Clear Completed Button */
+    .clear-completed {
+        width: 100%;
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9em;
+        font-weight: 500;
+        transition: background-color 0.2s;
+    }
+
+        .clear-completed:hover {
+            background-color: #e60000;
+        }
+
+
+    .input-group input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    .add-todo {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+
+    .add-todo:hover {
+        background-color: #0056b3;
+    }
+
+    .filter-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .filter-button {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .filter-button:hover {
+        background-color: #d0d0d0;
+    }
+
+    .filter-button.active {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .todo-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 10px;
+    }
+
+    .clear-completed {
+        width: 100%;
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9em;
+    }
+
+    .clear-completed:hover {
+        background-color: #e60000;
+    }
+</style>

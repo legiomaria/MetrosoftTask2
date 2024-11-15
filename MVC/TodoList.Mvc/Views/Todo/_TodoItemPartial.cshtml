@@ -1,0 +1,9 @@
+﻿@using TodoList.Api.Enums
+@using TodoList.Api.Models.Entities
+@model Todo
+
+<div class="todo-item" data-id="@Model.Id">
+    <input type="checkbox" class="toggle-complete" @(Model.Status == StatusEnum.Completed.ToString() ? "checked" : "") />
+    <span class="todo-title @(Model.Status == StatusEnum.Completed.ToString() ? "completed" : "")">@Model.Title</span>
+    <button type="button" class="delete-todo">Delete</button>
+</div>
