@@ -8,7 +8,13 @@
 1. Clone the application, from https://github.com/legiomaria/MetrosoftTask2.git.
 2. Run the application.
 3. The application automatically runs it migrations, create relevant tables, and seed the tables. 
-4. Enjoy.
+4. Rightclick on the solution name on Visual Studio.
+5. Click on properties.
+6. Click on Multiple Startup Projects.
+7. On the WebApi dropdown button, click on Start.
+8. On the MVC dropdown button, click on Start.
+9. Click on OK.
+10. Then click on Start on Visual Studio.
 
 # ConnectionString:
 The connectionstring is found in the appsettings.json, contained in the TodoList.Api project.
